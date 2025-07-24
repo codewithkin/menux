@@ -44,7 +44,7 @@ function Tabs() {
     ]
 
     return (
-        <TabsProvider defaultValue="all" className="w-[400px]">
+        <TabsProvider defaultValue="all" className="w-full">
             <TabsList className="rounded-full bg-gray-100 flex gap-4">
                 <TabsTrigger className="text-slate-800" value="all">All Restaurants</TabsTrigger>
                 <TabsTrigger className="text-slate-800" value="popular">Popular</TabsTrigger>
@@ -52,14 +52,14 @@ function Tabs() {
                 <TabsTrigger className="text-slate-800" value="fast_food">Fast Food</TabsTrigger>
             </TabsList>
             <TabsContent value="all">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 w-full gap-4">
                     {restaurants.map((restaurant: Restaurant) => (
                         <RestaurantCard key={restaurant.id} restaurant={restaurant} />
                     ))}
                 </div>
             </TabsContent>
             <TabsContent value="open">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 w-full gap-4">
                     {restaurants.map((restaurant: Restaurant) => {
                         const currentTime = new Date();
                         const closingTime = new Date();
@@ -75,7 +75,7 @@ function Tabs() {
                 </div>
             </TabsContent>
             <TabsContent value="popular">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 w-full gap-4">
                     {restaurants.map((restaurant: Restaurant) => {
                         if (restaurant.rating >= 4.5) {
                             return <RestaurantCard key={restaurant.id} restaurant={restaurant} />
@@ -86,7 +86,7 @@ function Tabs() {
                 </div>
             </TabsContent>
             <TabsContent value="fast_food">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 w-full gap-4">
                     {restaurants.map((restaurant: Restaurant) => {
                         if (restaurant.food.includes("Fast")) {
                             return <RestaurantCard key={restaurant.id} restaurant={restaurant} />
