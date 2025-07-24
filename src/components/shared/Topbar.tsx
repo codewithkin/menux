@@ -3,8 +3,6 @@ import Cart from './cart/Cart';
 
 
 function Topbar() {
-    const cart = [];
-
     return (
         <article className="w-full flex justify-end items-center p-4">
             <Cart />

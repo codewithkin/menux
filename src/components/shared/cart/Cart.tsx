@@ -4,6 +4,8 @@ import { ShoppingBag } from 'lucide-react'
 import EmptyCart from '../cart/EmptyCart'
 
 function Cart() {
+    const cart = [];
+
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -16,7 +18,13 @@ function Cart() {
                     <SheetTitle>Your Cart</SheetTitle>
                 </SheetHeader>
                 <article className="p-4">
-                    <EmptyCart />
+                    {
+                        cart.length === 0 ? (
+                            <EmptyCart />
+                        ) : (
+                            <p className="text-gray-600">You have {cart.length} items in your cart.</p>
+                        )
+                    }
                 </article>
             </SheetContent>
         </Sheet>
