@@ -45,7 +45,7 @@ function Tabs() {
     ]
 
     return (
-        <TabsProvider defaultValue="all" className="w-full">
+        <TabsProvider defaultValue="all" className="w-full flex flex-col justify-center items-center gap-4">
             <TabsList className="rounded-full bg-gray-100 flex gap-4">
                 <TabsTrigger className="text-slate-800" value="all">All Restaurants</TabsTrigger>
                 <TabsTrigger className="text-slate-800" value="popular">Popular</TabsTrigger>
