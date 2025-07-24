@@ -9,6 +9,7 @@ export type Restaurant = {
     image: string, // URL to the restaurant image
     rating: number, // e.g 4.5
     closingTime: string, // e.g "22:00"
+    type?: string // Restaurant, cafe
 }
 
 function Tabs() {

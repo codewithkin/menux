@@ -25,6 +25,20 @@ model User {
   sessions      Session[]
   accounts      Account[]
 
+  address String?
+  phone  String?
+
+  food String?
+  description String?
+  rating Int?
+  closingTime String?
+
+  type String? // Restaurant, cafe etc
+
+  orders Order[]
+
+  menu  Menu?
+
   @@unique([email])
   @@map("user")
 }
@@ -72,4 +86,47 @@ model Verification {
   updatedAt  DateTime?
 
   @@map("verification")
+}
+
+model Menu {
+  id  String  @id @default(cuid())
+
+  restaurant  User @relation(fields: [restaurantId], references: [id])
+  restaurantId String @unique
+
+  items       MenuItem[]
+}
+
+model MenuItem {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  image       String?
+
+  menu        Menu     @relation(fields: [menuId], references: [id], onDelete: Cascade)
+  menuId      String
+
+  orders      Order[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("menu_item")
+}
+
+model Order {
+  id          String   @id @default(cuid())
+
+  restaurant  User @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+
+  items       MenuItem[]
+  total       Float
+  status      String   // e.g. "pending", "completed", "cancelled"
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("order")
 }
