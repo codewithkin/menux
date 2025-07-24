@@ -4,7 +4,7 @@ import { Badge } from "../ui/badge"
 
 function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
     return (
-        <div className="p-4 border rounded-lg shadow-sm">
+        <div className="p-4">
             <img src={restaurant.image} alt={restaurant.name} className="w-full h-32 object-cover rounded-md mb-2" />
             <article className="flex itens-center justify-between w-full">
                 <h3 className="text-lg font-semibold">{restaurant.name}</h3>
